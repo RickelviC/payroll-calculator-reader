@@ -22,7 +22,6 @@ public class Main {
             String userInputWrite = scanner.nextLine();
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(userInputRead));
-
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(userInputWrite));
 
             String line;
@@ -40,12 +39,9 @@ public class Main {
                 double pay = Double.parseDouble(myArray[3].trim());
 
                 Employee employee = new Employee(id, name, hours, pay);
-
 /*
                 text = String.format("Employee ID: %d, Name: %s, Gross pay: $%.2f%n", employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
 */
-
-
                 if (userInputWrite.toLowerCase(Locale.ROOT).contains("json")) {
                     text = String.format("{\"id\" : %d, \"name\" : \"%s\", \"grossPay\" : %.2f},%n", employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
 
@@ -53,13 +49,9 @@ public class Main {
                     text = String.format("Employee ID: %d, Name: %s, Gross pay: $%.2f%n", employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
                 }
                 bufferedWriter.write(text);
-
-
             }
-
             bufferedReader.close();
             bufferedWriter.close();
-
         } catch (Exception ex) {
             System.err.println("Something went wrong reading the files!");
         }
