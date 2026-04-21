@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -40,9 +41,19 @@ public class Main {
 
                 Employee employee = new Employee(id, name, hours, pay);
 
+/*
                 text = String.format("Employee ID: %d, Name: %s, Gross pay: $%.2f%n", employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
+*/
 
+
+                if (userInputWrite.toLowerCase(Locale.ROOT).contains("json")) {
+                    text = String.format("{\"id\" : %d, \"name\" : \"%s\", \"grossPay\" : %.2f},%n", employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
+
+                } else {
+                    text = String.format("Employee ID: %d, Name: %s, Gross pay: $%.2f%n", employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
+                }
                 bufferedWriter.write(text);
+
 
             }
 
